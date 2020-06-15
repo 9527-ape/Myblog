@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--导航  inverted颜色翻 手机端stackable  -->
+<nav th:fragment="menu(n)" class="ui attached segment m-padded-tb-mini m-shadow-small" >
+    <div class="ui container m-top-div">
+        <div class="ui secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="/index" class="m-item inverted item" th:classappend="${n==1} ? 'active'"><i class=" home icon"></i>首页</a>
+            <a href="/types" class="m-item inverted item" th:classappend="${n==2} ? 'active'"><i class=" idea icon"></i>分类</a>
+            <a href="/tags" class="m-item inverted item"  th:classappend="${n==3} ? 'active'"><i class=" tags icon"></i>标签</a>
+            <a href="/archives" class="m-item inverted item" th:classappend="${n==4} ? 'active'"><i class=" clone icon"></i>归档</a>
+            <a href="/about" class="m-item inverted item" th:classappend="${n==5} ? 'active'"><i class=" info icon"></i>关于我</a>
+            <div class="right m-item item">
+                <div class="ui icon input m-margin-tb-tiny">
+                    <i class="search link icon"></i>
+                    <input type="text" placeholder="搜索....">
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+
+<div th:fragment="copyFooter">
+    <!--底部footer-->
+    <footer class="ui inverted vertical segment m-padded-tb-massive">
+        <div class="ui center aligned container">
+            <div class="m-footer-div"><p class="m-text-thin m-opacity-tiny"><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span></p></div>
+            <div class="m-footer-div"><p class="m-text-thin m-opacity-tiny">© 2019-2020 jiangsijia.cn版权所有  |  <a href="http://www.beian.miit.gov.cn">湘ICP备20010557号</a></p></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <script>
+        //手机导航栏隐藏
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        //运行记时
+        var now = new Date();
+        function createtime(){
+            var grt= new Date("2020/05/20 00:00:00");/*---这里是网站的启用时间--*/
+            now.setTime(now.getTime()+250);
+            days = (now - grt ) / 1000 / 60 / 60 / 24;
+            dnum = Math.floor(days);
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+            hnum = Math.floor(hours);
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;}
+            minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes);
+            if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds);
+            if(String(snum).length ==1 ){snum = "0" + snum;}
+            document.getElementById("timeDate").innerHTML = "本站已经稳定运行"+dnum+"天";
+            document.getElementById("times").innerHTML = hnum + "小时" + mnum + "分" + snum + "秒";
+        }
+        setInterval("createtime()",250);
+
+    </script>
+</div>
+</body>
+</html>
