@@ -33,10 +33,10 @@ public class TypeController {
         return "admin/types";
     }
 
-    @GetMapping("/deletType")
-    public String deletType(Long id){
+    @GetMapping("/deleteType")
+    public String deleteType(Long id){
         typeService.deleteType(id);
-        return "";
+        return "admin/types";
     }
 
 }
