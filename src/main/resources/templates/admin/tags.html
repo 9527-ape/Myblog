@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="admin/_fragments :: head(~{::title})">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>标签管理</title>
@@ -10,13 +10,13 @@
 <body>
 
 <!--引入导航-->
-<nav th:replace="admin/copy :: menu(3)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" ></nav>
+<nav th:replace="admin/copy :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" ></nav>
 
   <div class="ui attached pointing menu">
     <div class="ui container">
       <div class="right menu">
-        <a href="#" class="item">新增</a>
-        <a href="#" class="teal active item">列表</a>
+        <a href="#" th:href="@{/admin/tags/input}" class="item">新增</a>
+        <a href="#" th:href="@{/admin/tags}" class="teal active item">列表</a>
       </div>
     </div>
   </div>
@@ -64,6 +64,7 @@
 
   <br>
   <br>
+
 <!--引入底部-->
 <div th:include="copy :: copyFooter"></div>
 
@@ -79,13 +80,13 @@
       on : 'hover'
     });
 
-    //消息提示关闭初始化
+    //消息提示关闭初始化,点击叉号可以关闭提示
     $('.message .close')
-      .on('click', function () {
-        $(this)
-          .closest('.message')
-          .transition('fade');
-      });
+            .on('click', function () {
+              $(this)
+                      .closest('.message')
+                      .transition('fade');
+            });
   </script>
 </body>
 </html>

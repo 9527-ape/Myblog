@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020/6/15 0015.
  */
 public interface TypeRepositoty extends JpaRepository<Type, Long>{
+    Type findByName(String name);
 }

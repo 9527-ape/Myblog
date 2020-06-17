@@ -24,10 +24,11 @@
   <!--中间内容-->
   <div  class="m-container-small m-padded-tb-big">
     <div class="ui container">
+  <!-- 提示使用message组件-->
       <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
         <i class="close icon"></i>
         <div class="header">提示：</div>
-        <p th:text="${message}">恭喜，操作成功！</p>
+        <p th:text="${message}">提示内容，后台返回后替换</p>
       </div>
 
       <table class="ui celled table">
@@ -41,10 +42,10 @@
         <tbody>
           <tr th:each="type,iterStat : ${page.content}">
             <td th:text="${iterStat.count}">1</td>
-            <td th:text="${type.name}">练习清单</td>
+            <td th:text="${type.name}">测试</td>
             <td>
               <a href="#" class="ui mini teal basic button">编辑</a>
-              <a href="#" class="ui mini red basic button">删除</a>
+              <a href="#" th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="ui mini red basic button">删除</a>
             </td>
           </tr>
         </tbody>
@@ -55,7 +56,7 @@
                 <a th:href="@{/admin/types(page=${page.number}-1)}" class="  item" th:unless="${page.first}">上一页</a>
                 <a th:href="@{/admin/types(page=${page.number}+1)}" class=" item" th:unless="${page.last}">下一页</a>
               </div>
-              <a href="#" th:href="@{/admin/types/input}"  class="ui mini right floated teal basic button">新增</a>
+              <a href="/admin/typesInput" class="ui mini right floated teal basic button">新增</a>
             </th>
           </tr>
         </tfoot>
@@ -70,7 +71,6 @@
 <!--引入底部-->
 <div th:include="copy :: copyFooter"></div>
 
-
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 
@@ -83,7 +83,7 @@
       on : 'hover'
     });
 
-    //消息提示关闭初始化
+    //消息提示关闭初始化,点击叉号可以关闭提示
     $('.message .close')
       .on('click', function () {
         $(this)

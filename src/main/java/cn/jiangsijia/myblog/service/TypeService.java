@@ -23,4 +23,5 @@ public interface TypeService {
     //分页
     Page<Type> listType(Pageable pageable);
 
+    Type getTypeByName(String name);
 }
