@@ -14,6 +14,8 @@ public class Type {
     @Id
     @GeneratedValue
     private Long id;
+
+    //不能为空
     private String name;
 
     @OneToMany(mappedBy = "type")

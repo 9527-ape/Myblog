@@ -54,10 +54,8 @@ public class LoginController {
         return "redirect:/admin";
     }
 
-
     @GetMapping("/blogs")
     public  String blogs(){
         return "admin/blogs";
     }
-
 }

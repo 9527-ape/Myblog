@@ -30,7 +30,7 @@ public class TypeServiceImpl implements TypeService {
     @Transactional//事务
     @Override
     public void deleteType(Long id) {
-        typeRepositoty.deleteById(id);
+       typeRepositoty.deleteById(id);
     }
 
     @Transactional//事务
@@ -48,7 +48,8 @@ public class TypeServiceImpl implements TypeService {
     @Transactional//事务
     @Override
     public Type getType(Long id) {
-        return null;
+        Type type = typeRepositoty.getOne(id);
+        return type;
     }
 
     @Transactional//事务

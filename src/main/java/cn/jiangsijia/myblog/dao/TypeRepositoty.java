@@ -1,7 +1,6 @@
 package cn.jiangsijia.myblog.dao;
 
 import cn.jiangsijia.myblog.po.Type;
-import com.sun.javaws.progress.PreloaderPostEventListener;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
