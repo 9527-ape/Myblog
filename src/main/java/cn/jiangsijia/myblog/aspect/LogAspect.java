@@ -23,21 +23,23 @@ public class LogAspect {
     public void log(){}
 
     //切面前(请求前).1
-    @Before("log()")
-    public  void doBefore(){
-            logger.info("==========请求前==========");
-    }
+//    @Before("log()")
+//    public  void doBefore(){
+//        logger.info("==========请求前==========");
+//    }
 
     //切面后(请求后).2
-    @After("log()")
-    public  void doAftre(){
-        logger.info("==========请求后==========");
-    }
+//    @After("log()")
+//    public  void doAftre(){
+//        logger.info("==========请求后==========");
+//    }
 
     //(请求执行完成返回过程中).3
     //获取返回内容result
     @AfterReturning(returning = "result",pointcut = "log()")
     public  void doAftreRuturn(Object result){
-        logger.info("Result : {}",result);
+
+//        logger.info("Result : {}",result);
+
     }
 }

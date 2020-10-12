@@ -21,6 +21,7 @@ public class TypeServiceImpl implements TypeService {
     @Autowired
     TypeRepositoty typeRepositoty;
 
+    //添加
     @Transactional//事务
     @Override
     public Type saveType(Type type) {

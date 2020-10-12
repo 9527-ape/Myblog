@@ -38,9 +38,7 @@ public class TypesController {
 
     @GetMapping("/selectType/{id}")
     public String editInput (@PathVariable Long id, Model model){
-        System.out.println("跳转到编辑根据id查询=============="+id+"===================");
         Type type = typeService.getType(id);
-        System.out.println( type.getId()+"================"+type.getName());
         model.addAttribute("type", type);
         return "admin/typesInput";
     }
@@ -75,7 +73,7 @@ public class TypesController {
             return "admin/typesInput";
         }
         Type t = typeService.saveType(type);
-        System.out.println(t.getId());
+       // System.out.println(t.getId());
         if (t == null ) {
             attributes.addFlashAttribute("message", "新增失败");
         } else {
@@ -85,7 +83,6 @@ public class TypesController {
         //因为返回的时候用的重定向，所以对重定向链接地址追加传递的参数用RedirectAttributes
         return "redirect:/admin/types";
     }
-
     //修改
     @PostMapping("/types/{id}")
     public String updateTypes(@Validated Type type,BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
